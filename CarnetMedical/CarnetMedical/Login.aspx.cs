@@ -41,7 +41,7 @@ namespace CarnetMedical.CarnetMedical
                 string query = "SELECT Id FROM Utilisateur WHERE Email = @Email AND MotDePasse = @MotDePasse";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@MotDePasse", motDePasse); // à sécuriser avec un hash plus tard
+                cmd.Parameters.AddWithValue("@MotDePasse", motDePasse); 
 
                 conn.Open();
                 object result = cmd.ExecuteScalar();

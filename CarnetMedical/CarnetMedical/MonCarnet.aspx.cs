@@ -17,7 +17,7 @@ namespace CarnetMedical.CarnetMedical
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Protection de la page grace a la session ici je refuse l'acces si la personne n'est pas connecter i.e na pas de session en cours
+            // Protection de la page grace a la session ici je refuse l'acces si la personne n'est pas connecter i.e n'a pas de session en cours
             if (Session["UserId"] == null)
             {
                 Response.Redirect("Login.aspx");
@@ -39,11 +39,11 @@ namespace CarnetMedical.CarnetMedical
 
                     if (reader.Read())
                     {
-                        lblGroupeSanguin.Text = "🩸 Groupe sanguin : " + reader["GroupeSanguin"].ToString();
-                        lblAllergies.Text = "🤧 Allergies : " + reader["Allergies"].ToString();
-                        lblMaladies.Text = "🏥 Maladies chroniques : " + reader["MaladiesChroniques"].ToString();
-                        lblMedicaments.Text = "💊 Médicaments : " + reader["Medicaments"].ToString();
-                        lblDerniereMaj.Text = "🕒 Dernière mise à jour : " + Convert.ToDateTime(reader["DateDerniereMiseAJour"]).ToString("dd/MM/yyyy");
+                        lblGroupeSanguin.Text = reader["GroupeSanguin"].ToString();
+                        lblAllergies.Text = reader["Allergies"].ToString();
+                        lblMaladies.Text =  reader["MaladiesChroniques"].ToString();
+                        lblMedicaments.Text =  reader["Medicaments"].ToString();
+                        lblDerniereMaj.Text =  Convert.ToDateTime(reader["DateDerniereMiseAJour"]).ToString("dd/MM/yyyy");
                     }
                     else
                     {

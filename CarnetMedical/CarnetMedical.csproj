@@ -123,9 +123,12 @@
     <Content Include="CarnetMedical\AdminHistorique.aspx" />
     <Content Include="CarnetMedical\AdminUtilisateur.aspx" />
     <Content Include="CarnetMedical\Dashboard.aspx" />
+    <Content Include="CarnetMedical\images\doctor.png" />
     <Content Include="CarnetMedical\Historique.aspx" />
+    <Content Include="CarnetMedical\images\medical-bg.jpg" />
     <Content Include="CarnetMedical\Login.aspx" />
     <Content Include="CarnetMedical\Logout.aspx" />
+    <Content Include="CarnetMedical\images\medTools.jpeg" />
     <Content Include="CarnetMedical\ModifierCarnet.aspx" />
     <Content Include="CarnetMedical\MonCarnet.aspx" />
     <Content Include="CarnetMedical\Register.aspx" />

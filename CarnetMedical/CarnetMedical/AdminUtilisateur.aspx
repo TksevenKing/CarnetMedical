@@ -1,19 +1,28 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminUtilisateur.aspx.cs" Inherits="CarnetMedical.CarnetMedical.AdminUtilisateur" %>
+﻿<%@ Page Title="Admin utilisateur" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="AdminUtilisateur.aspx.cs" Inherits="CarnetMedical.CarnetMedical.AdminUtilisateur" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title>AdminUtilisateur</title>
-</head>
-<body>
-    <form id="form1" runat="server">
-        <div>
-            <h2>Liste des utilisateurs</h2>
-            <asp:GridView ID="gvUsers" runat="server" AutoGenerateColumns="true" />
-            <a href="AdminDashboard.aspx">⬅ Retour</a>
 
+
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <div class="text-center">
+        <h3>Bienvenue dans votre espace Administrateur</h3>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-10">
+                <div class="card border-success shadow">
+                    <div class="card-header bg-success text-white">
+                        <h5 class="mb-0">👥 Liste des utilisateurs</h5>
+                    </div>
+                    <div class="card-body">
+                        <asp:GridView ID="gvUsers" runat="server" CssClass="table table-bordered table-striped" />
+                        <a href="AdminDashboard.aspx" class="btn btn-outline-secondary mt-3">⬅ Retour</a>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-</body>
-</html>
+    </div>
+</asp:Content>

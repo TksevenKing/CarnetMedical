@@ -2,43 +2,72 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <main>
-        <section class="row" aria-labelledby="aspnetTitle">
-            <h1 id="aspnetTitle">ASP.NET</h1>
-            <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-            <p><a href="http://www.asp.net" class="btn btn-primary btn-md">Learn more &raquo;</a></p>
-        </section>
 
-        <div class="row">
-            <section class="col-md-4" aria-labelledby="gettingStartedTitle">
-                <h2 id="gettingStartedTitle">Getting started</h2>
-                <p>
-                    ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-                A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="librariesTitle">
-                <h2 id="librariesTitle">Get more libraries</h2>
-                <p>
-                    NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-                </p>
-            </section>
-            <section class="col-md-4" aria-labelledby="hostingTitle">
-                <h2 id="hostingTitle">Web Hosting</h2>
-                <p>
-                    You can easily find a web hosting company that offers the right mix of features and price for your applications.
-                </p>
-                <p>
-                    <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-                </p>
-            </section>
+
+
+
+    <style>
+        .landing {
+            background: url('CarnetMedical/images/medical-bg.jpg') no-repeat center center;
+            background-size: cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-shadow: 0 1px 4px rgba(0,0,0,0.7);
+        }
+
+        .landing-overlay {
+            background-color: rgba(0, 0, 0, 0.6); /* Assombrissement du fond */
+            padding: 60px;
+            border-radius: 15px;
+        }
+
+        @media (max-width: 768px) {
+            .landing-overlay {
+                padding: 30px;
+            }
+        }
+    </style>
+
+    <section class="landing">
+        <div class="landing-overlay text-center">
+            <h1 class="display-4 text-success fw-bold">Bienvenue sur Carnet Médical 💚</h1>
+            <p class="lead mt-3 mb-4">
+                Gérez vos informations médicales en toute simplicité et sécurité.<br />
+                Consultez votre historique, suivez vos traitements, et accédez à votre dossier à tout moment.
+            </p>
+
+            <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                <a href="CarnetMedical/Login.aspx" class="btn btn-success btn-lg px-4 me-sm-3">Se connecter</a>
+                <a href="CarnetMedical/Register.aspx" class="btn btn-outline-light btn-lg px-4">Créer un compte</a>
+            </div>
         </div>
-    </main>
+    </section>
+
+    <hr class="my-5" />
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <h5>🩺 Votre santé, en ligne</h5>
+            <p>Conservez toutes vos informations médicales dans un espace personnel et sécurisé.</p>
+        </div>
+        <div class="col-md-4">
+            <h5>📊 Statistiques claires</h5>
+            <p>Visualisez vos données médicales grâce à un tableau de bord simple et moderne.</p>
+        </div>
+        <div class="col-md-4">
+            <h5>🔐 Confidentialité assurée</h5>
+            <p>Vos données sont protégées et accessibles uniquement par vous.</p>
+        </div>
+    </div>
+    
+
+
+
+
+
+    
 
 </asp:Content>

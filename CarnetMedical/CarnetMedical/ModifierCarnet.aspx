@@ -1,29 +1,56 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="ModifierCarnet.aspx.cs" Inherits="CarnetMedical.CarnetMedical.ModifierCarnet" %>
+﻿<%@ Page Title="ModifierCarnet" MasterPageFile="~/Site.Master" Language="C#" AutoEventWireup="true" CodeBehind="ModifierCarnet.aspx.cs" Inherits="CarnetMedical.CarnetMedical.ModifierCarnet" %>
 
-<!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <title></title>
-</head>
-<body>
-    <h2>Modifier mon carnet médical</h2>
 
-    <asp:Label ID="lblMessage" runat="server" ForeColor="Green" /><br />
-    <form id="form1" runat="server">
-        <div>
-            <asp:TextBox ID="txtGroupeSanguin" runat="server" Placeholder="Groupe sanguin" /><br />
-            <asp:TextBox ID="txtAllergies" runat="server" TextMode="MultiLine" Rows="3" Columns="50" Placeholder="Allergies" /><br />
-            <asp:TextBox ID="txtMaladies" runat="server" TextMode="MultiLine" Rows="3" Columns="50" Placeholder="Maladies chroniques" /><br />
-            <asp:TextBox ID="txtMedicaments" runat="server" TextMode="MultiLine" Rows="3" Columns="50" Placeholder="Médicaments" /><br />
-            <br />
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- Ton contenu ici : cards, graphiques, données, etc. -->
 
-            <asp:Button ID="btnEnregistrer" runat="server" Text="💾 Enregistrer" OnClick="btnEnregistrer_Click" /><br />
-            <a href="Historique.aspx">Voir l'Historique des Modificationss</a>
-            <br />
-            <a href="Dashboard.aspx">⬅ Retour</a>
+    <div class="text-center">
+        <h3>Bienvenue dans votre espace personnel</h3>
+    </div>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-success shadow">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4>🖊️ Modifier mon carnet médical</h4>
+                    </div>
+                    <div class="card-body">
+                        <asp:Label ID="Label1" runat="server" CssClass="text-success" /><br />
 
+                        <div class="mb-3">
+                            <label class="form-label">🩸 Groupe sanguin</label>
+                            <asp:TextBox ID="txtGroupeSanguin" runat="server" CssClass="form-control" placeholder="Ex : O+, A-, AB-" />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">🤧 Allergies</label>
+                            <asp:TextBox ID="txtAllergies" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Entrez vos allergies ici..." />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">🏥 Maladies chroniques</label>
+                            <asp:TextBox ID="txtMaladies" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Entrez vos maladies chroniques ici..." />
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">💊 Médicaments</label>
+                            <asp:TextBox ID="txtMedicaments" runat="server" TextMode="MultiLine" Rows="3" CssClass="form-control" placeholder="Entrez vos traitements ou médicaments..." />
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a href="Dashboard.aspx" class="btn btn-outline-secondary">⬅ Retour</a>
+                            <asp:Button ID="btnEnregistrer" runat="server" CssClass="btn btn-success" Text="💾 Enregistrer" OnClick="btnEnregistrer_Click" />
+                            <asp:Label ID="lblMessage" runat="server" ForeColor="Green" /><br />
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-    </form>
-</body>
-</html>
+    </div>
+
+
+</asp:Content>
+
+
+

@@ -1,25 +1,40 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="CarnetMedical.CarnetMedical.AdminDashboard" %>
+﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="CarnetMedical.CarnetMedical.AdminDashboard" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>AdminDashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
-    <div>
-        <h2>Tableau de bord - Administrateur</h2>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card border-success shadow">
+                    <div class="card-header bg-success text-white text-center">
+                        <h4>🔐 Tableau de bord – Administrateur</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <p class="mb-4">Bienvenue administrateur. Choisissez une action :</p>
 
-        <ul>
-            <li><a href="AdminUtilisateur.aspx">👤 Gérer les utilisateurs</a></li>
-            <li><a href="AdminHistorique.aspx">📋 Voir tous les historiques</a></li>
-            <li><a href="Logout.aspx">🚪 Se déconnecter</a></li>
-        </ul>
-
+                        <div class="d-grid gap-3">
+                            <a href="AdminUtilisateur.aspx" class="btn btn-outline-success btn-lg">👤 Gérer les utilisateurs</a>
+                            <a href="AdminHistorique.aspx" class="btn btn-outline-success btn-lg">📋 Voir tous les historiques</a>
+                            <a href="Logout.aspx" class="btn btn-danger btn-lg">🚪 Se déconnecter</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+
     <form id="form1" runat="server">
         <div>
         </div>
     </form>
+    <!-- Bootstrap 5 JS (optionnel mais recommandé pour composants interactifs) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
