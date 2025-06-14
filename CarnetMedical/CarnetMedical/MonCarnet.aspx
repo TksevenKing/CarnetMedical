@@ -4,10 +4,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Ton contenu ici : cards, graphiques, données, etc. -->
-    <div class="text-center">
-        <h3>Bienvenue dans votre espace personnel</h3>
-    </div>
+
 
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -40,7 +37,9 @@
                         </dl>
 
                         <div class="d-flex justify-content-between mt-4">
-                            <a href="Dashboard.aspx" class="btn btn-outline-secondary">⬅ Retour</a>
+                            <a href="MesDocuments.aspx" class="btn btn-outline-secondary">Téléverser Mes documents</a>
+
+                            <a href="CreerCarnet.aspx" class="btn btn-outline-success">Créer un Carnet</a>
 
                             <asp:Button ID="btnExportPDF" runat="server" Text="📤 Exporter en PDF" CssClass="btn btn-success" OnClick="btnExportPDF_Click" />
 

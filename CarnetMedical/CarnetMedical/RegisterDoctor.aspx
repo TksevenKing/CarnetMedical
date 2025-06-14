@@ -1,12 +1,10 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Register.aspx.cs" Inherits="CarnetMedical.CarnetMedical.Register" %>
-
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterDoctor.aspx.cs" Inherits="CarnetMedical.CarnetMedical.RegisterDoctor" %>
 
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
-    <!-- Bootstrap 5 CSS -->
+    <title>Register Doctor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
@@ -25,6 +23,11 @@
                         </div>
 
                         <div class="mb-3">
+                            <label class="form-label">Specialité</label>
+                            <asp:TextBox ID="txtSpecialite" runat="server" CssClass="form-control" placeholder="specialité" />
+                        </div>
+
+                        <div class="mb-3">
                             <label class="form-label">Email</label>
                             <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control" placeholder="Adresse e-mail" />
                         </div>
@@ -35,7 +38,7 @@
                         </div>
 
                         <asp:Button ID="btnRegister" runat="server" Text="S'inscrire" CssClass="btn btn-success w-100" OnClick="btnRegister_Click" />
-                        <a href="RegisterDoctor.aspx" class="btn btn-outline-success mt-1">Je suis un docteur</a>
+                        
                         <asp:Label ID="lblMessage" runat="server" CssClass="text-danger" />
                     </div>
                 </div>
@@ -52,4 +55,3 @@
 
 </body>
 </html>
-

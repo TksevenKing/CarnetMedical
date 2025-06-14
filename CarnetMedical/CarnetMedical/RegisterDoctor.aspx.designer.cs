@@ -11,7 +11,7 @@ namespace CarnetMedical.CarnetMedical
 {
 
 
-    public partial class Register
+    public partial class RegisterDoctor
     {
 
         /// <summary>
@@ -31,6 +31,15 @@ namespace CarnetMedical.CarnetMedical
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtNom;
+
+        /// <summary>
+        /// txtSpecialite control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtSpecialite;
 
         /// <summary>
         /// txtEmail control.

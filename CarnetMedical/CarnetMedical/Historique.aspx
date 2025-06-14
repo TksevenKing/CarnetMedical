@@ -1,19 +1,30 @@
-﻿<%@ Page Title="Dashboard" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Historique.aspx.cs" Inherits="CarnetMedical.CarnetMedical.Historique" %>
+﻿<%@ Page Title="Historiques" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Historique.aspx.cs" Inherits="CarnetMedical.CarnetMedical.Historique" %>
+
+
 
 
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Ton contenu ici : cards, graphiques, données, etc. -->
-    <div class="text-center">
-        <h3>Bienvenue dans votre espace personnel</h3>
+
+    <div class="container mt-5">
+        <div class="card shadow border-success">
+            <div class="card-header bg-success text-white">
+                <h4 class="mb-0">📜 Historique de mes modifications médicales</h4>
+            </div>
+            <div class="card-body">
+
+                <asp:Label ID="lblInfo" runat="server" CssClass="text-danger fw-bold mb-3 d-block" />
+
+                <asp:GridView ID="gvHistorique" runat="server" AutoGenerateColumns="true"
+                              CssClass="table table-bordered table-striped table-hover"
+                              GridLines="None">
+                </asp:GridView>
+
+                <a href="Dashboard.aspx" class="btn btn-outline-secondary mt-3">⬅ Retour au tableau de bord</a>
+            </div>
+        </div>
     </div>
 
-    <div>
-        <h2>Historique de mes modifications médicales</h2>
-        <asp:GridView ID="gvHistorique" runat="server" AutoGenerateColumns="true" />
-        <a href="Dashboard.aspx">⬅ Retour</a>
-
-    </div>
 </asp:Content>
 

@@ -1,8 +1,11 @@
-﻿using System;
+﻿using Org.BouncyCastle.Crypto.Macs;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography; // Pour le hashage du mot de passe
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -32,40 +35,60 @@ namespace CarnetMedical.CarnetMedical
         protected void btnLogin_Click(object sender, EventArgs e)
         {
             string email = txtEmail.Text.Trim();
-            string motDePasse = HashPassword(txtMotDePasse.Text); // Hashage du MDP avant la comparaison
+            string motDePasse = HashPassword(txtMotDePasse.Text.Trim()); // Hashage du MDP avant la comparaison
 
-            using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString))
+            if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(motDePasse))
             {
-                string query = "SELECT Id FROM Utilisateur WHERE Email = @Email AND MotDePasse = @MotDePasse";
-                SqlCommand cmd = new SqlCommand(query, conn);
+                lblMessage.Text = "Veuillez saisir votre email et votre mot de passe.";
+                return;                     // stoppe la méthode ici
+            }
+
+            /* 1 seule requête UNION => Id + Rôle            *
+             * ───────────────────────────────────────────── */
+            const string sql = @"
+                SELECT Id, Role FROM Utilisateur 
+                WHERE Email = @Email AND MotDePasse = @Pwd
+                UNION
+                SELECT Id, 'Docteur' AS Role FROM Docteur
+                WHERE Email = @Email AND MotDePasse = @Pwd";
+
+            using (SqlConnection cn = new SqlConnection(
+                       ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString))
+            using (SqlCommand cmd = new SqlCommand(sql, cn))
+            {
                 cmd.Parameters.AddWithValue("@Email", email);
-                cmd.Parameters.AddWithValue("@MotDePasse", motDePasse); 
+                cmd.Parameters.AddWithValue("@Pwd", motDePasse);
 
-                conn.Open();
-                object result = cmd.ExecuteScalar();
-
-                if (result != null)
+                cn.Open();
+                using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    // Connexion réussie
-                    Session["UserId"] = result.ToString();
+                    if (rd.Read())          // ✔️ identifiants trouvés
+                    {
+                        int id = rd.GetInt32(0);
+                        string role = rd.GetString(1);   // 'Admin', 'Utilisateur' ou 'Docteur'
 
-                    // Récupérer le rôle
-                    string roleQuery = "SELECT Role FROM Utilisateur WHERE Id = @Id";
-                    SqlCommand roleCmd = new SqlCommand(roleQuery, conn);
-                    roleCmd.Parameters.AddWithValue("@Id", result);
-                    string role = roleCmd.ExecuteScalar()?.ToString();
-                    Session["Role"] = role;
+                        /* ---------- 3. Stockage session ---------- */
+                        Session["UserId"] = id;
+                        Session["Role"] = role;
 
-                    // Redirection selon le rôle
-                    if (role == "Admin")
-                        Response.Redirect("AdminDashboard.aspx");
+                        /* ---------- 4. Redirection ---------- */
+                        switch (role)
+                        {
+                            case "Admin":
+                                Response.Redirect("AdminDashboard.aspx");
+                                break;
+                            case "Docteur":
+                                Response.Redirect("MyPatients.aspx");   // page d’accueil docteur
+                                break;
+                            default:                                   // Utilisateur
+                                Response.Redirect("Dashboard.aspx");
+                                break;
+                        }
+                    }
                     else
-                        Response.Redirect("Dashboard.aspx");
-
-                }
-                else
-                {
-                    lblMessage.Text = "Email ou mot de passe incorrect.";
+                    {
+                        lblMessage.Text = "Email ou mot de passe incorrect.";
+                    }
                 }
             }
         }

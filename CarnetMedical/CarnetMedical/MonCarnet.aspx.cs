@@ -91,7 +91,13 @@ namespace CarnetMedical.CarnetMedical
             PdfWriter.GetInstance(pdfDoc, ms);
 
             pdfDoc.Open();
-            pdfDoc.Add(new Paragraph("Carnet Médical Personnel"));
+            // Titre
+            var titre = new Paragraph("Mon Carnet Médical By MEDICARD", FontFactory.GetFont("Arial", 18, Font.BOLD));
+            titre.Alignment = Element.ALIGN_CENTER;
+            pdfDoc.Add(titre);
+            pdfDoc.Add(new Paragraph("\n"));
+
+            
             pdfDoc.Add(new Paragraph(" "));
             pdfDoc.Add(new Paragraph("🩸 Groupe sanguin : " + groupe));
             pdfDoc.Add(new Paragraph("🤧 Allergies : " + allergies));

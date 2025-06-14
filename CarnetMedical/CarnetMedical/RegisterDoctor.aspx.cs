@@ -3,19 +3,15 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Security.Cryptography; // Pour le hashage du MDP
-using System.Text;
-//using System.Net.Mail; // Pour l'envoi du mail de bienvenue  a ajouter apres
-//using System.Net;
-
-
 
 namespace CarnetMedical.CarnetMedical
 {
-    public partial class Register : System.Web.UI.Page
+    public partial class RegisterDoctor : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -38,9 +34,11 @@ namespace CarnetMedical.CarnetMedical
         {
             string nom = txtNom.Text.Trim();
             string email = txtEmail.Text.Trim();
+            string specialite = txtSpecialite.Text.Trim();
             string motDePasse = HashPassword(txtMotDePasse.Text); // je hash le MDP avant de le stocker
 
-            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(motDePasse))
+
+            if (string.IsNullOrEmpty(nom) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(motDePasse) || string.IsNullOrEmpty(specialite))
             {
                 lblMessage.Text = "Veuillez remplir tous les champs!";
                 return;                     // stoppe la méthode ici
@@ -48,10 +46,11 @@ namespace CarnetMedical.CarnetMedical
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString))
             {
-                string query = "INSERT INTO Utilisateur (Nom, Email, MotDePasse) VALUES (@Nom, @Email, @MotDePasse)";
+                string query = "INSERT INTO Docteur (Nom, Email,Specialite , MotDePasse) VALUES (@Nom, @Email, @Specialite, @MotDePasse)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Nom", nom);
                 cmd.Parameters.AddWithValue("@Email", email);
+                cmd.Parameters.AddWithValue("@Specialite", specialite);
                 cmd.Parameters.AddWithValue("@MotDePasse", motDePasse);
 
                 try
@@ -59,7 +58,7 @@ namespace CarnetMedical.CarnetMedical
                     conn.Open();
                     cmd.ExecuteNonQuery();
                     //lblMessage.Text = "Inscription réussie. <a href='Login.aspx' class='btn btn-primary'>Se connecter</a>";
-                    
+
                     Response.Redirect("Login.aspx");
                 }
                 catch (SqlException ex)
@@ -68,21 +67,5 @@ namespace CarnetMedical.CarnetMedical
                 }
             }
         }
-
-        // Fonciton d'envoi du mail de bienvenue
-        //private void EnvoyerEmailBienvenue(string email, string nom)
-        //{
-        //    MailMessage message = new MailMessage();
-        //    message.To.Add(email);
-        //    message.Subject = "Bienvenue sur Carnet Médical !";
-        //    message.Body = $"Bonjour {nom},\n\nMerci de vous être inscrit sur notre plateforme.\n\nVotre carnet médical est maintenant accessible en ligne.\n\nCordialement,\nL'équipe Médicale";
-        //    message.IsBodyHtml = false;
-        //    message.From = new MailAddress("oumarciss300@gmail.com");
-
-        //    SmtpClient smtp = new SmtpClient();
-        //    smtp.Send(message);
-        //}
-
-
     }
 }
