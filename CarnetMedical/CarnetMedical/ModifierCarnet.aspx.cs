@@ -7,6 +7,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : ModifierCarnet.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère la modification et la suppression du carnet médical de l'utilisateur connecté
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class ModifierCarnet : System.Web.UI.Page
@@ -22,6 +31,8 @@ namespace CarnetMedical.CarnetMedical
 
             if (!IsPostBack)
             {
+
+                // Charger les informations médicales de l'utilisateur 
                 int userId = Convert.ToInt32(Session["UserId"]);
 
                 using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString))
@@ -45,7 +56,7 @@ namespace CarnetMedical.CarnetMedical
                 }
             }
         }
-
+        // Fonction pour enregistrer les modifications du carnet médical
         protected void btnEnregistrer_Click(object sender, EventArgs e)
         {
             int userId = Convert.ToInt32(Session["UserId"]);
@@ -66,6 +77,7 @@ namespace CarnetMedical.CarnetMedical
 
                 string query;
 
+                // Si un carnet existe déjà, on sauvegarde dans l'historique avant de modifier
                 if (count > 0)
                 {
 
@@ -97,6 +109,38 @@ namespace CarnetMedical.CarnetMedical
                 lblMessage.Text = "✅ Modifications enregistrées avec succès.";
             }
         }
+        // / Fonction pour supprimer le carnet médical
+        protected void btnSupprimerCarnet_Click(object sender, EventArgs e)
+        {
+            int userId = Convert.ToInt32(Session["UserId"]);
+
+            string connStr = ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString;
+            using (SqlConnection conn = new SqlConnection(connStr))
+            {
+                string sql = "DELETE FROM CarnetMedical WHERE UtilisateurId = @Id";
+                SqlCommand cmd = new SqlCommand(sql, conn);
+                cmd.Parameters.AddWithValue("@Id", userId);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+
+                if (rowsAffected > 0)
+                {
+                    lblSuppression.Text = "✅ Votre carnet médical a été supprimé avec succès.";
+                    
+                    txtGroupeSanguin.Text = "";
+                    txtAllergies.Text = "";
+                    txtMaladies.Text = "";
+                    txtMedicaments.Text = "";
+                }
+                else
+                {
+                    lblSuppression.Text = "❌ Aucun carnet trouvé à supprimer.";
+                }
+            }
+        }
+
 
     }
 }

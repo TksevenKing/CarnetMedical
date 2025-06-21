@@ -3,6 +3,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <!-- Affichage de la liste des patients qui ont autorisé le docteur a Consulter leur carnet-->
+
     <div class="container mt-4">
         <h2 class="text-success mb-4">👥 Mes Patients</h2>
 

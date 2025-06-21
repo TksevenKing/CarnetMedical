@@ -7,6 +7,8 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <!-- affichage de l'historique des modifications du carnet médical de l'utilisateur connecté -->
+
     <div class="container mt-5">
         <div class="card shadow border-success">
             <div class="card-header bg-success text-white">

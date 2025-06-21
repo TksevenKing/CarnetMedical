@@ -4,6 +4,15 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : MyPatients.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar Cissé
+ * Rôle           : Gère l'affichage des patients qui ont autorisés le docteur connecté  à consulter leur carnet médical
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical
 {
     public partial class MyPatients : System.Web.UI.Page
@@ -20,6 +29,7 @@ namespace CarnetMedical
                 ChargerMesPatients();
         }
 
+        // Charge la liste des patients qui ont autorisés le docteur connecté à consulter leur carnet médical
         private void ChargerMesPatients()
         {
             int docteurId = Convert.ToInt32(Session["UserId"]);
@@ -27,6 +37,7 @@ namespace CarnetMedical
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
+                // Requête pour récupérer les patients qui ont autorisés le docteur connecté  à consulter leur carnet médical
                 string query = @"
                     SELECT u.Id, u.Nom, u.Email
                     FROM Utilisateur u
@@ -47,7 +58,7 @@ namespace CarnetMedical
                     lblInfo.Text = "Aucun patient ne vous a encore autorisé l'accès.";
             }
         }
-
+        // Gestion de la commande du GridView pour voir le carnet médical d'un patient
         protected void gvPatients_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Voir")

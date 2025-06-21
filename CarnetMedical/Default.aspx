@@ -1,6 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="CarnetMedical._Default" %>
 
 
+<!--
+     * Fichier        : Default.aspx
+     * Projet         : Carnet Médical Personnel (MediCard)
+     * Auteur         : Oumar Cissé
+     * Rôle           : Cette page est le Landing de l'application: il contient une presentation de l'application avec ses fonctionnalites et action se connecter ou s'inscrire 
+    -->
+
 
 <!DOCTYPE html>
 
@@ -79,8 +86,8 @@
                     <div class="col-md-4 mb-4">
                         <div class="card h-100 border-success shadow-sm">
                             <div class="card-body text-center">
-                                <h5 class="card-title">📊 Statistiques claires</h5>
-                                <p class="card-text">Visualisez vos données médicales grâce à un tableau de bord simple et moderne.</p>
+                                <h5 class="card-title">👌 Partage Simplifié</h5>
+                                <p class="card-text">Partager vos documents et informations Médicales avec votre Docteur en un seul clique !</p>
                             </div>
                         </div>
                     </div>

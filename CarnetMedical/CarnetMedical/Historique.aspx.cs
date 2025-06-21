@@ -7,6 +7,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : Historique.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère l'affichage de l'historique des modifications du carnet médical de l'utilisateur connecté
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class Historique : System.Web.UI.Page

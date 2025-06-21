@@ -5,12 +5,22 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : DoctorsPublic.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar Cissé
+ * Rôle           : Gère l'affichage des docteurs disponibles pour l'utilisateur connecté
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical
 {
     public partial class DoctorsPublic : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Page uniquement accessible aux utilisateurs (patients) connectés
             if (Session["UserId"] == null || Session["Role"]?.ToString() != "Utilisateur")
             {
                 Response.Redirect("Login.aspx");
@@ -21,6 +31,11 @@ namespace CarnetMedical
                 ChargerListeDocteurs();
         }
 
+        // Charge la liste des docteurs disponibles pour l'utilisateur connecté
+        /*   Cette méthode récupère les docteurs depuis la base de données et vérifie s'ils sont déjà ajoutés par le patient.
+         * Elle remplit un GridView avec les informations des docteurs.
+         * Si aucun docteur n'est disponible, un message d'information est affiché.
+         */
         private void ChargerListeDocteurs()
         {
             int patientId = Convert.ToInt32(Session["UserId"]);
@@ -28,6 +43,7 @@ namespace CarnetMedical
 
             using (SqlConnection conn = new SqlConnection(connStr))
             {
+                // Requête pour récupérer les docteurs et vérifier s'ils sont déjà ajoutés par le patient
                 string query = @"
                     SELECT d.Id, d.Nom, d.Email, d.Specialite,
                     CASE WHEN pd.Id IS NULL THEN CAST(0 AS BIT) ELSE CAST(1 AS BIT) END AS EstAjoute
@@ -49,6 +65,7 @@ namespace CarnetMedical
             }
         }
 
+        // Gestion de l'événement de commande du GridView pour ajouter un docteur
         protected void gvDoctors_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Ajouter")
@@ -68,6 +85,7 @@ namespace CarnetMedical
                     conn.Open();
                     int exists = (int)checkCmd.ExecuteScalar();
 
+                    // Si pas déjà lié, on ajoute la relation
                     if (exists == 0)
                     {
                         string insertQuery = "INSERT INTO PatientDocteur (PatientId, DocteurId) VALUES (@PatientId, @DocteurId)";

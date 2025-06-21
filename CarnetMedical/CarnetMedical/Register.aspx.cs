@@ -1,17 +1,21 @@
-﻿using System;
+﻿using CarnetMedical.CarnetMedical;
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography; // Pour le hashage du MDP
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Security.Cryptography; // Pour le hashage du MDP
-using System.Text;
-//using System.Net.Mail; // Pour l'envoi du mail de bienvenue  a ajouter apres
-//using System.Net;
 
-
+/*
+    *Fichier        : Register.apsx.cs
+    * Rôle           : Gere l'inscription des utilisateurs sauf pour l'admin dont on insere le compte directement dans la base de donnees dans MSSQL en specifiant le Role = "admin"
+    * Auteur         : Oumar Cissé
+  
+ */
 
 namespace CarnetMedical.CarnetMedical
 {
@@ -54,12 +58,23 @@ namespace CarnetMedical.CarnetMedical
                 cmd.Parameters.AddWithValue("@Email", email);
                 cmd.Parameters.AddWithValue("@MotDePasse", motDePasse);
 
+                /*************************************************************************************************************************************************************************
+                 *Note: Le Role par défaut est 'Utilisateur' car on ne le spécifie pas ici, l'admin est inséré manuellement dans la base de données au premier lancement de l'application*
+                 *************************************************************************************************************************************************************************/
+                //string queryAdmin = "INSERT INTO Utilisateur (Nom, Email, MotDePasse, Role) VALUES (@Nom, @Email, @MotDePasse, @Role)";
+                //SqlCommand cmdAdmin = new SqlCommand(queryAdmin, conn);
+                //cmdAdmin.Parameters.AddWithValue("@Nom", "admin");
+                //cmdAdmin.Parameters.AddWithValue("@Email", "admin@gmail.com");
+                //cmdAdmin.Parameters.AddWithValue("@MotDePasse", "123Admin");
+                //cmdAdmin.Parameters.AddWithValue("@Role", "Admin");
+
                 try
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    //lblMessage.Text = "Inscription réussie. <a href='Login.aspx' class='btn btn-primary'>Se connecter</a>";
-                    
+                    //cmdAdmin.ExecuteNonQuery(); // Insertion de l'admin
+
+
                     Response.Redirect("Login.aspx");
                 }
                 catch (SqlException ex)
@@ -69,19 +84,6 @@ namespace CarnetMedical.CarnetMedical
             }
         }
 
-        // Fonciton d'envoi du mail de bienvenue
-        //private void EnvoyerEmailBienvenue(string email, string nom)
-        //{
-        //    MailMessage message = new MailMessage();
-        //    message.To.Add(email);
-        //    message.Subject = "Bienvenue sur Carnet Médical !";
-        //    message.Body = $"Bonjour {nom},\n\nMerci de vous être inscrit sur notre plateforme.\n\nVotre carnet médical est maintenant accessible en ligne.\n\nCordialement,\nL'équipe Médicale";
-        //    message.IsBodyHtml = false;
-        //    message.From = new MailAddress("oumarciss300@gmail.com");
-
-        //    SmtpClient smtp = new SmtpClient();
-        //    smtp.Send(message);
-        //}
 
 
     }

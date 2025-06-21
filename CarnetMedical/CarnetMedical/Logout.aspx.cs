@@ -5,6 +5,16 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : Logout.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère la deconnexion de l'utilisateur en supprimant la session et en le redirigeant vers la page de connexion
+ * Date           : Juin 2025
+ *************************************************************/
+
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class Logout : System.Web.UI.Page

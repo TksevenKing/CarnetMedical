@@ -7,6 +7,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/**************************************************************
+ * Fichier        : Login.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère le dashboard de l'utilisateur connecté en affichant son nom
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class Dashboard : System.Web.UI.Page

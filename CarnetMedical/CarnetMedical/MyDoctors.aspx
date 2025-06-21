@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="Mes Docteurs" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="MyDoctors.aspx.cs" Inherits="CarnetMedical.MyDoctors" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <!-- Afficahge de la liste des docteurs qui ont été ajouter par le patient c'est a dire qui ont acces a son Carnet Médicale y compris ses dossiers scannés -->
+
     <div class="container mt-4">
         <h2 class="mb-4 text-success">👨‍⚕️ Mes Docteurs Autorisés</h2>
 

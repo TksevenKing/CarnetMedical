@@ -4,12 +4,20 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data.SqlClient;
 using System.Linq;
-using System.Security.Cryptography; // Pour le hashage du mot de passe
+using System.Security.Cryptography; 
 using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : Login.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère l'authentification de l'utilisateur et le redirige vers son dashboard en fonction du Role (Utilisateur, Docteur, admin)
+ * Date           : Juin 2025
+ *************************************************************/
 
 namespace CarnetMedical.CarnetMedical
 {
@@ -40,7 +48,7 @@ namespace CarnetMedical.CarnetMedical
             if (string.IsNullOrEmpty(email) || string.IsNullOrEmpty(motDePasse))
             {
                 lblMessage.Text = "Veuillez saisir votre email et votre mot de passe.";
-                return;                     // stoppe la méthode ici
+                return;                     
             }
 
             /* 1 seule requête UNION => Id + Rôle            *
@@ -62,7 +70,7 @@ namespace CarnetMedical.CarnetMedical
                 cn.Open();
                 using (SqlDataReader rd = cmd.ExecuteReader())
                 {
-                    if (rd.Read())          // ✔️ identifiants trouvés
+                    if (rd.Read())          // identifiants trouvés
                     {
                         int id = rd.GetInt32(0);
                         string role = rd.GetString(1);   // 'Admin', 'Utilisateur' ou 'Docteur'
@@ -75,7 +83,7 @@ namespace CarnetMedical.CarnetMedical
                         switch (role)
                         {
                             case "Admin":
-                                Response.Redirect("AdminDashboard.aspx");
+                                Response.Redirect("AdminUtilisateur.aspx");
                                 break;
                             case "Docteur":
                                 Response.Redirect("MyPatients.aspx");   // page d’accueil docteur

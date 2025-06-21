@@ -1,5 +1,11 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="CarnetMedical.SiteMaster" %>
 
+
+<!--
+     * Fichier        : Site.Master
+     * Rôle           : il contient: l'entete, le footer et un sidebar qui s'affiche dynamiquement en fonction du Role de l'utilisateur
+     * Auteur         : Oumar Cissé
+    -->
 <!DOCTYPE html>
 <html lang="fr">
 <head runat="server">
@@ -67,6 +73,7 @@
                         <asp:Label ID="lblNom" runat="server" CssClass="text-success fw-bold fs-5" />
                     </p>
                 </div>
+                <!-- si l'utilsateur est un patient -->
                 <asp:PlaceHolder ID="phPatient" runat="server" Visible="false">
                     <a href="Dashboard.aspx">🏠 Accueil</a>
                     <a href="MonCarnet.aspx">📋 Mon carnet</a>
@@ -76,18 +83,20 @@
                     <a href="DoctorsPublic.aspx">🔍 Trouver un docteur</a>
                 </asp:PlaceHolder>
 
+                <!-- Si Role=Docteur -->
                 <asp:PlaceHolder ID="phDocteur" runat="server" Visible="false">
                     <a href="MyPatients.aspx">👥 Mes patients</a>
                 </asp:PlaceHolder>
 
+                <!-- Si Role = admin -->
                 <asp:PlaceHolder ID="phAdmin" runat="server" Visible="false">
                     <a href="AdminDashboard.aspx">⚙️ Admin Dashboard</a>
-                    <a href="AdminUtilisateurs.aspx">👤 Utilisateurs</a>
-                    <a href="AdminHistoriques.aspx">🗂️ Historique global</a>
+                    <a href="AdminUtilisateur.aspx">👤 Utilisateurs</a>
+                    <a href="AdminHistorique.aspx">🗂️ Historique global</a>
                 </asp:PlaceHolder>
 
                 <hr />
-                <a href="AdminDashboard.aspx">🔐 Admin</a>
+                <a href="Login.aspx">🔐 Admin</a>
                 <a href="Logout.aspx" class="text-white">🚪 Déconnexion</a>
 
 

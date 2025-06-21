@@ -9,6 +9,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/**************************************************************
+ * Fichier        : RegisterDoctor.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar Cissé
+ * Rôle           : Gère l'inscription des docteurs dans le système
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class RegisterDoctor : System.Web.UI.Page
@@ -46,6 +54,7 @@ namespace CarnetMedical.CarnetMedical
 
             using (SqlConnection conn = new SqlConnection(ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString))
             {
+                // Role par defaut est 'Docteur' car on ne le spécifie pas ici.
                 string query = "INSERT INTO Docteur (Nom, Email,Specialite , MotDePasse) VALUES (@Nom, @Email, @Specialite, @MotDePasse)";
                 SqlCommand cmd = new SqlCommand(query, conn);
                 cmd.Parameters.AddWithValue("@Nom", nom);
@@ -57,7 +66,7 @@ namespace CarnetMedical.CarnetMedical
                 {
                     conn.Open();
                     cmd.ExecuteNonQuery();
-                    //lblMessage.Text = "Inscription réussie. <a href='Login.aspx' class='btn btn-primary'>Se connecter</a>";
+                    
 
                     Response.Redirect("Login.aspx");
                 }

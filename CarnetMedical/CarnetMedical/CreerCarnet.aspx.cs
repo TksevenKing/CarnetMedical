@@ -7,6 +7,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : CreerCarnet.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère la creation d'un carnet médical pour l'utilisateur connecté
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class CreerCarnet : System.Web.UI.Page
@@ -23,6 +32,8 @@ namespace CarnetMedical.CarnetMedical
 
         }
 
+        // Fonction pour enregistrer le carnet médical de l'utilisateur
+        
         protected void btnEnregistrer_Click(object sender, EventArgs e)
         {
             int userId = Convert.ToInt32(Session["UserId"]);

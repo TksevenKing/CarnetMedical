@@ -1,5 +1,10 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="RegisterDoctor.aspx.cs" Inherits="CarnetMedical.CarnetMedical.RegisterDoctor" %>
 
+
+<!-- Page contenant le formulaire d'inscription d'un docteur -->
+
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,6 +14,13 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+        <!-- NavBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-4" href="Default.aspx">MediCard 🩺</a>
+            </div>
+        </nav>
 
         <div class="container mt-5">
             <div class="row justify-content-center">
@@ -38,7 +50,7 @@
                         </div>
 
                         <asp:Button ID="btnRegister" runat="server" Text="S'inscrire" CssClass="btn btn-success w-100" OnClick="btnRegister_Click" />
-                        
+
                         <asp:Label ID="lblMessage" runat="server" CssClass="text-danger" />
                     </div>
                 </div>

@@ -2,7 +2,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-
+    <!-- Dashboard de l'utilisateur connecte -->
 
     <div class="container mt-5">
         <div class="row justify-content-center">
@@ -15,7 +15,7 @@
                         <h5>
                             <asp:Label ID="lblNom" runat="server" CssClass="text-success" />
                         </h5>
-                        
+                        <!-- Affichage du dashboard dans un container-->
 
                         <div class="d-grid gap-3">
                             <a href="MonCarnet.aspx" class="btn btn-outline-success btn-lg">📄 Consulter mon carnet médical</a>

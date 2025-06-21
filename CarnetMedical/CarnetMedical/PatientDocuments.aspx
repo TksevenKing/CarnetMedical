@@ -3,6 +3,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <!-- Documents medicaux du patient -->
+
     <div class="container mt-5">
         <div class="card border-primary shadow">
             <div class="card-header bg-success text-white">

@@ -6,12 +6,21 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
 
+/**************************************************************
+ * Fichier        : MyDoctors.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar Cissé
+ * Rôle           : Gère l'affichage des docteurs autorisés par l'utilisateur connecté
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical
 {
     public partial class MyDoctors : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Protection de la page : l'utilisateur doit être connecté et avoir le rôle "Utilisateur"
             if (Session["UserId"] == null || Session["Role"]?.ToString() != "Utilisateur")
             {
                 Response.Redirect("Login.aspx");
@@ -24,6 +33,7 @@ namespace CarnetMedical
             }
         }
 
+        // Charge la liste des docteurs autorisés par l'utilisateur connecté
         private void ChargerMesDocteurs()
         {
             int patientId = Convert.ToInt32(Session["UserId"]);
@@ -52,6 +62,9 @@ namespace CarnetMedical
             }
         }
 
+        // Gestion de l'événement de commande du GridView pour supprimer un docteur
+        /* Cette méthode est appelée lorsque l'utilisateur clique sur le bouton "Supprimer" dans le GridView */
+
         protected void gvMyDoctors_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Supprimer")
@@ -75,6 +88,7 @@ namespace CarnetMedical
             }
         }
 
+        // Gestion de l'événement RowDataBound pour ajuster la largeur des cellules
         protected void gvMyDoctors_RowDataBound(object sender, GridViewRowEventArgs e)
         {
             e.Row.Cells[3].Attributes["style"] = "width: 100px;";

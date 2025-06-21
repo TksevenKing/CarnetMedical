@@ -1,5 +1,8 @@
 ﻿<%@ Page Language="C#"  AutoEventWireup="true" CodeBehind="AdminDashboard.aspx.cs" Inherits="CarnetMedical.CarnetMedical.AdminDashboard" %>
 
+
+<!-- Dashboard de l'admin -->
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -22,7 +25,7 @@
                         <div class="d-grid gap-3">
                             <a href="AdminUtilisateur.aspx" class="btn btn-outline-success btn-lg">👤 Gérer les utilisateurs</a>
                             <a href="AdminHistorique.aspx" class="btn btn-outline-success btn-lg">📋 Voir tous les historiques</a>
-                            <a href="Logout.aspx" class="btn btn-danger btn-lg">🚪 Se déconnecter</a>
+                          
                         </div>
                     </div>
                 </div>

@@ -3,7 +3,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Ton contenu ici : cards, graphiques, données, etc. -->
+    <!-- Formulaire de modification du Carnet -->
 
 
     <div class="container mt-5">
@@ -37,9 +37,14 @@
                         </div>
 
                         <div class="d-flex justify-content-between">
-                            <a href="Dashboard.aspx" class="btn btn-outline-secondary">⬅ Retour</a>
+                            
                             <asp:Button ID="btnEnregistrer" runat="server" CssClass="btn btn-success" Text="💾 Enregistrer" OnClick="btnEnregistrer_Click" />
                             <asp:Label ID="lblMessage" runat="server" ForeColor="Green" /><br />
+                            <asp:Button ID="btnSupprimerCarnet" runat="server" Text="🗑️ Supprimer mon carnet"
+                                CssClass="btn btn-danger mt-3"
+                                 OnClick="btnSupprimerCarnet_Click" />
+                            <asp:Label ID="lblSuppression" runat="server" CssClass="text-success mt-2 d-block" />
+
                         </div>
                     </div>
                 </div>

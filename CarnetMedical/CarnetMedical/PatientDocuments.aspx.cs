@@ -8,6 +8,14 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+/**************************************************************
+ * Fichier        : PatientDocuments.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère l'affichage des documents médicaux d'un patient pour un docteur autorisé
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class PatientDocuments : System.Web.UI.Page
@@ -43,6 +51,12 @@ namespace CarnetMedical.CarnetMedical
                 ChargerDocuments(patientId);
         }
 
+        /**************************************************************
+         * Vérifie si le docteur a l'autorisation d'accéder aux documents du patient
+         * docId L'ID du docteur
+         * patientId L'ID du patient
+         * Retourne true si autorisé, false sinon
+         *************************************************************/
         private bool EstAutorise(int docId, int patientId)
         {
             string cs = ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString;
@@ -57,7 +71,10 @@ namespace CarnetMedical.CarnetMedical
                 return (int)cmd.ExecuteScalar() > 0;
             }
         }
-
+        /**************************************************************
+         * Charge les documents médicaux du patient dans le GridView
+         * patientId L'ID du patient dont on charge les documents
+         *************************************************************/
         private void ChargerDocuments(int patientId)
         {
             string cs = ConfigurationManager.ConnectionStrings["CarnetMedConnectionName"].ConnectionString;

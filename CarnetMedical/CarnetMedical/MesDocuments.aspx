@@ -2,6 +2,9 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <!-- Importation des document medicaux scannee au format PDF -->
+
     <asp:FileUpload ID="fileUpload" runat="server" CssClass="form-control" />
     <asp:Button ID="btnUpload" runat="server" Text="📤 Importer le document"
         CssClass="btn btn-success mt-2" OnClick="btnUpload_Click" />

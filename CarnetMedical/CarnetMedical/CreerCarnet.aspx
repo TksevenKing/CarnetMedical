@@ -5,7 +5,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Ton contenu ici : cards, graphiques, données, etc. -->
+    <!-- Formulaire de creation de Carnet -->
 
     <div class="text-center">
         <h3>Bienvenue dans votre espace personnel</h3>

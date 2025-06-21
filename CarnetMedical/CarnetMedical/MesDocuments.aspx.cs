@@ -9,6 +9,15 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
+
+/**************************************************************
+ * Fichier        : MesDocuments.aspx.cs
+ * Projet         : Carnet Médical Personnel (MediCard)
+ * Auteur         : Oumar
+ * Rôle           : Gère l'affichage et l'importation de documents médicaux pour l'utilisateur connecté
+ * Date           : Juin 2025
+ *************************************************************/
+
 namespace CarnetMedical.CarnetMedical
 {
     public partial class MesDocuments : System.Web.UI.Page
@@ -25,6 +34,7 @@ namespace CarnetMedical.CarnetMedical
 
         }
 
+        // Fonction pour importer un document médical
         protected void btnUpload_Click(object sender, EventArgs e)
         {
             if (!fileUpload.HasFile || Path.GetExtension(fileUpload.FileName).ToLower() != ".pdf")
@@ -59,6 +69,8 @@ namespace CarnetMedical.CarnetMedical
             ChargerDocuments(); // méthode pour afficher les documents
         }
 
+
+        // Fonction pour charger les documents médicaux de l'utilisateur
         private void ChargerDocuments()
         {
             int patientId = Convert.ToInt32(Session["UserId"]);

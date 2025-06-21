@@ -7,7 +7,7 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
-    <!-- Ton contenu ici : cards, graphiques, données, etc. -->
+    <!-- GridView d'affichage des modifications de carnet de tous les utilisateurs-->
     <div class="text-center">
         <h3>Bienvenue dans votre espace Administrateur</h3>
     </div>

@@ -1,5 +1,13 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Login.aspx.cs" Inherits="CarnetMedical.CarnetMedical.Login" %>
 
+
+<!--
+     * Fichier        : Login.apsx
+     * Rôle           : Formulaire de connexion
+     * Auteur         : Oumar Cissé
+    -->
+
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -9,7 +17,16 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
+
+
     <form id="form1" runat="server">
+
+        <!-- NavBAR -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-success text-center">
+            <div class="container-fluid">
+                <a class="navbar-brand fw-bold fs-4" href="Default.aspx">MediCard 🩺</a>
+            </div>
+        </nav>
 
 
         <div class="container mt-5">
@@ -25,7 +42,7 @@
                         </div>
                         <div class="mb-3">
                             <asp:TextBox ID="txtMotDePasse" runat="server" TextMode="Password" CssClass="form-control" placeholder="Mot de passe" />
- 
+
                         </div>
                         <asp:Button ID="btnLogin" runat="server" CssClass="btn btn-success w-100" Text="Se connecter" OnClick="btnLogin_Click" />
                         <asp:Button ID="ButtonRegister" runat="server" CssClass="btn btn-outline-success w-100 mt-1" Text="S'inscrire" OnClick="btnRegister1_Click" /><br />

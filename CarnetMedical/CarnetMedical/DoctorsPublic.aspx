@@ -4,8 +4,12 @@
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+
+    <!--  Affichage de laiste des docteurs inscrit sur l'application et ajoutable par l'utilisateur -->
+
     <div class="container mt-4">
         <h2 class="text-success mb-4">📋 Tous les docteurs disponibles</h2>
+        <p class="text-danger">Attention en cliquant sur ajouter vous donnez au docteur le droit de voir vos informations médicales et fichiers associés</p>
 
         <asp:Label ID="lblInfo" runat="server" CssClass="text-danger fw-bold" />
 
@@ -21,7 +25,7 @@
 
                 <asp:TemplateField HeaderText="Action">
                     <ItemTemplate>
-                        <asp:Label ID="lblAjoute" runat="server" Text="✔️ Ajouté"
+                        <asp:Label ID="lblAjoute" runat="server" Text="✔️ Ajouté"  <!--Afficher ceci quand le docteur est deja ajoutee-->
                                    CssClass="text-success fw-bold"
                                    Visible='<%# (bool)Eval("EstAjoute") %>' />
 
