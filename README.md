@@ -41,10 +41,10 @@ Au Maroc, l'assurance exige l'envoi des dossiers médicaux originaux (ordonnance
 - `CarnetMedical/` : Pages ASPX, code-behind et logique
 - `App_Code/` : Classes partagées
 - `Scripts/` et `Content/` : JS / CSS / Bootstrap
-- `App_Data/` : (optionnel) base locale pour tests
 - `web.config` : Configuration + chaînes de connexion
 
 ---
+<img width="1366" height="768" alt="Capture d’écran (180)" src="https://github.com/user-attachments/assets/86accaa1-e539-4ff7-93fc-05ad996ec9e0" />
 
 ## 🧪 Démonstration rapide (optionnel si tu as une vidéo ou capture)
 
@@ -52,12 +52,6 @@ Au Maroc, l'assurance exige l'envoi des dossiers médicaux originaux (ordonnance
 
 ---
 
-## 🧾 Base de données
-
-Tu peux retrouver le script de création dans ce dépôt :  
-📄 `MediCard_Script_BaseDeDonnees.sql`
-
----
 
 ## 📦 Déploiement local (IIS)
 
@@ -71,8 +65,8 @@ Tu peux retrouver le script de création dans ce dépôt :
 
 ## 🙋‍♂️ Auteur
 
-**Oumar** – Étudiant en informatique – Passionné par les solutions utiles & concrètes  
-📧 Contact : oumar@email.com *(remplace avec ton vrai contact)*
+**OumarKingDev** – Étudiant en informatique – Passionné par les solutions utiles & concrètes  
+📧 Contact : oumarciss300@gmail.com 
 
 ---
 
