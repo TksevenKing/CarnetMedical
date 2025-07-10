@@ -44,13 +44,16 @@ Au Maroc, l'assurance exige l'envoi des dossiers médicaux originaux (ordonnance
 - `web.config` : Configuration + chaînes de connexion
 
 ---
+
+## 🧪 Démonstration rapide 
+
 <img width="1366" height="768" alt="Capture d’écran (180)" src="https://github.com/user-attachments/assets/86accaa1-e539-4ff7-93fc-05ad996ec9e0" />
+<img width="1366" height="768" alt="Capture d’écran (196)" src="https://github.com/user-attachments/assets/9f9058b1-b656-4fdd-b44b-f775a529b012" />
+<img width="1366" height="768" alt="Capture d’écran (204)" src="https://github.com/user-attachments/assets/23b9c0c8-4ae0-4556-b514-42c3ed107d2b" />
 
-## 🧪 Démonstration rapide (optionnel si tu as une vidéo ou capture)
-
-> ![screenshot](./assets/demo.png)
 
 ---
+
 
 
 ## 📦 Déploiement local (IIS)
