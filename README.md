@@ -45,7 +45,7 @@ Au Maroc, l'assurance exige l'envoi des dossiers médicaux originaux (ordonnance
 
 ---
 
-## 🧪 Démonstration rapide 
+## 🧪 Aperçu du projet avec quelques capture d'écran 
 
 <img width="1366" height="768" alt="Capture d’écran (180)" src="https://github.com/user-attachments/assets/86accaa1-e539-4ff7-93fc-05ad996ec9e0" />
 <img width="1366" height="768" alt="Capture d’écran (196)" src="https://github.com/user-attachments/assets/9f9058b1-b656-4fdd-b44b-f775a529b012" />
