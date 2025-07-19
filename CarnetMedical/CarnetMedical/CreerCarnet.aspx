@@ -21,7 +21,7 @@
                         <asp:Label ID="Label1" runat="server" CssClass="text-success" /><br />
 
                         <div class="mb-3">
-                            <label class="form-label">🩸 Groupe sanguin</label>
+                            <label class="form-label">🩸 Groupe sanguin </label>
                             <asp:TextBox ID="txtGroupeSanguin" runat="server" CssClass="form-control" placeholder="Ex : O+, A-, AB-" />
                         </div>
 
